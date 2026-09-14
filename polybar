@@ -1,0 +1,139 @@
+ #BAR CONFIG 
+
+[colors]
+    background = #662d3436
+    foreground = #fbf1c7
+    primary = #fb4934
+    secondary = #b8bb26
+
+[bar/mybar]
+    width = 100%
+    height = 16pt
+    bottom = false
+
+      background = ${colors.background}
+      foreground = ${colors.foreground}
+
+      line-size = 3pt
+
+      padding-left = 0
+      padding-right = 1
+
+      module-margin = 1
+
+      separator =
+      separator-foreground = #000000
+
+      font-0 = "MesloLGS Nerd Font:size=13;3"
+
+      modules-left = arch-logo i3
+      modules-right = tray memory battery date cpu
+
+      cursor-click = pointer
+      cursor-scroll = ns-resize
+
+      enable-ipc = true
+
+      tray-position = right
+      tray-detached = true
+      tray-maxsize = 20
+
+      tray-offset-x = -15
+      tray-offset-y = 5
+      tray-background = ${colors.background}
+
+ #MODULE CONFIG
+
+[module/i3]
+    type = internal/i3
+     show-urgent = true
+     index-sort = true
+     enable-click = true
+     enable-scroll = false
+     fuzzy-match = true
+
+     label-focused = %index%
+     label-focused-background = ${colors.primary}
+     label-focused-foreground = #ffffff
+     label-focused-padding = 1
+
+     label-unfocused = %index%
+     label-unfocused-padding = 1
+
+     label-visible = %index%
+     label-visible-padding = 1
+
+     label-urgent = %index%
+     label-urgent-background = #cc241d
+     label-urgent-padding = 1
+
+[module/wlan]
+    type = internal/network
+     interface = wlp2s0
+     interface-type = wireless
+     interval = 3.0
+     format-connected = <label-connected>
+     label-connected = %{F#F0C674}%{F-} %essid%
+     format-disconnected = <label-disconnected>
+     label-disconnected = %{F#707880}%{F-} Disconnected
+
+[module/memory]
+    type = internal/memory
+
+     ; Seconds to sleep between updates
+     ; Default: 1
+     interval = 3
+
+     ; Default: 90
+     ; New in version 3.6.0
+     warn-percentage = 95
+
+[module/battery]
+    type = internal/battery
+     full-at = 99
+     low-at = 5
+     battery = BAT1
+     adapter = ADP1
+     poll-interval = 5
+     format-charging = <label-charging>
+     format-discharging = <label-discharging>
+     label-charging = %{F#b8bb26}󱐋%{F-} %percentage%%
+     label-discharging = %{F#8ec07c}%{F-} %percentage%%
+     label-full = %{F#b8bb26}%{F-} %percentage%%
+     label-low = %{F#fb4934}%{F-} %percentage%%
+
+[module/date]
+    type = internal/date
+     interval = 1
+     date = %Y-%m-%d %H:%M:%S
+     label = %date%
+     label-foreground = ${colors.foreground}
+
+[module/arch-logo]
+    type = custom/text
+     content = 
+     content-foreground = #1793D1
+     content-padding = 1
+
+[module/tray]
+    type = internal/tray
+
+     format-margin = 8px
+     tray-spacing = 8px
+     tray-size = 20px
+
+[module/cpu]
+    type = internal/cpu
+
+     ; Seconds to sleep between updates
+     ; Default: 1
+     interval = 0.5
+
+     ; Default: 80
+     ; New in version 3.6.0
+     warn-percentage = 95
+
+[settings]
+     screenchange-reload = true
+     pseudo-transparency = true
+
