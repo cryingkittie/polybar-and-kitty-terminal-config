@@ -1,2 +1,1 @@
-# my-kitty-config-
-This is my Kitty-config I find it simple, and you might want to try it too
+These are some of the configurations I use in the software for i3wm (for now only polybar and kitty-terminal as soon as possible I will upload others)
